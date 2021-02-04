@@ -1,22 +1,24 @@
 <template>
   <div>
-    <section v-for="(procedure) in procedures" :key="procedure.sys.id">
-      <h1>{{ procedure.fields.title }}</h1>
-      <!-- <p>{{ procedure.fields.description }}</p> -->
-    </section>
-    <Logo />
+    index.vue works
+    <body-areas-top-filter :items="bodyAreas"></body-areas-top-filter>
   </div>
 </template>
 
 <script>
+import BodyAreasTopFilter from "@/components/BodyAreasTopFilter.vue";
+
 import { createClient } from "~/plugins/contentful";
 
 const client = createClient();
 
 export default {
   data: () => ({
-
+    bodyAreas: []
   }),
+  components: {
+    BodyAreasTopFilter
+  },
   async asyncData({env}){
     try{
       const data = await client.getEntries();

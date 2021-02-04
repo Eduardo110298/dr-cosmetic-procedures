@@ -1,7 +1,7 @@
 {  
   "CTF_PROCEDURE_TYPE": "procedure",
-  "CTF_BODY_AREA_TYPE": "category",
-  "CTF_CATEGORY_TYPE": "bodyArea",
+  "CTF_BODY_AREA_TYPE": "bodyArea",
+  "CTF_CATEGORY_TYPE": "category",
   "CTF_SPACE_ID": "245qyoyp04q1",
   "CTF_CDA_ACCESS_TOKEN": "7HuTiphpD2g0i6EpoaKY9V3O-y5QKRZCSg6ZGvDMohw"
 }
