@@ -1,12 +1,13 @@
 <template>
   <div>
-    index.vue works
     <body-areas-top-filter :items="bodyAreas"></body-areas-top-filter>
+    <procedures-grid :items="procedures"></procedures-grid>
   </div>
 </template>
 
 <script>
 import BodyAreasTopFilter from "@/components/BodyAreasTopFilter.vue";
+import ProceduresGrid from "@/components/ProceduresGrid.vue";
 
 import { createClient } from "~/plugins/contentful";
 
@@ -14,9 +15,9 @@ const client = createClient();
 
 export default {
   data: () => ({
-    bodyAreas: []
   }),
   components: {
+    ProceduresGrid,
     BodyAreasTopFilter
   },
   async asyncData({env}){

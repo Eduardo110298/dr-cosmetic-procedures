@@ -48,7 +48,7 @@ export default {
   overflow-x: auto
   display: flex
   flex-flow: row nowrap
-  width: 420px
+  width: 100%
 
   figure
     cursor: pointer
