@@ -1,13 +1,17 @@
 <template>
-  <div>
+  <main>
     <body-areas-top-filter :items="bodyAreas"></body-areas-top-filter>
-    <procedures-grid :items="procedures"></procedures-grid>
-  </div>
+    <section id="main-grid">
+      <left-sidebar-filter></left-sidebar-filter>
+      <procedures-grid :items="procedures"></procedures-grid>
+    </section>
+  </main>
 </template>
 
 <script>
 import BodyAreasTopFilter from "@/components/BodyAreasTopFilter.vue";
 import ProceduresGrid from "@/components/ProceduresGrid.vue";
+import LeftSidebarFilter from "@/components/LeftSidebarFilter.vue";
 
 import { createClient } from "~/plugins/contentful";
 
@@ -17,6 +21,7 @@ export default {
   data: () => ({
   }),
   components: {
+    LeftSidebarFilter,
     ProceduresGrid,
     BodyAreasTopFilter
   },
@@ -41,3 +46,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+@media (min-width: 768px){
+  #main-grid {
+    display: flex
+  }
+}
+</style>

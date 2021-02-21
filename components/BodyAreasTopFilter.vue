@@ -49,7 +49,7 @@ export default {
   display: flex
   flex-flow: row nowrap
   width: 100%
-
+  margin-bottom: 30px
   figure
     cursor: pointer
     text-align: center

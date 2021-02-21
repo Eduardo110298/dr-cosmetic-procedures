@@ -27,7 +27,10 @@ export default {
 
 <style lang="sass" scoped>
 #proceduresGrid
-  margin: 25px 5px 5px 25px 
+  width: 100%
+  // background: blue
+  @media (min-width: 768px)
+    margin: 25px 5px 5px 25px
   .procedure
     padding: 20px
     border: 1px solid rgba(31,26,57,.101961)
