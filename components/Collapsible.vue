@@ -1,10 +1,12 @@
 <template>
   <section>
     <button type="button" class="collapsible" @click="visible = !visible">
-      <b><slot name="title"></slot></b>
+      <b>
+        <slot name="title"></slot>
+      </b>
       <arrow :direction="visible ? 'up' : 'down'"></arrow>
     </button>
-    <div class="content" :style="'height: ' + (visible ? '100px' : '0px') ">
+    <div class="content" :style="'height: ' + (visible ? '300px' : '0px') ">
       <slot name="content"></slot>
     </div>
   </section>
@@ -35,8 +37,20 @@ export default {
 }
 
 .content {
-  padding: 0 18px;
+  margin: 0 10px 0 18px;
   transition: all 0.3s ease-in-out;
-  overflow: hidden;
+  overflow: auto;
+}
+
+.content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.content::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+.content::-webkit-scrollbar-thumb {
+  background-color: rgba(31, 26, 57, 0.101961);
+  border-radius: 10px;
 }
 </style>

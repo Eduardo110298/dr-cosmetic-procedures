@@ -1,9 +1,9 @@
 <template>
   <main>
-    <body-areas-top-filter :items="bodyAreas"></body-areas-top-filter>
+    <body-areas-top-filter :items="bodyAreas" @change="handleBodyAreaChange" ></body-areas-top-filter>
     <section id="main-grid">
-      <left-sidebar-filter></left-sidebar-filter>
-      <procedures-grid :items="procedures"></procedures-grid>
+      <left-sidebar-filter :bodyAreas="bodyAreas" :bodyAreasSelected="bodyAreaIds"></left-sidebar-filter>
+      <procedures-grid :items="procedures.filter(filterProcedure)"></procedures-grid>
     </section>
   </main>
 </template>
@@ -19,6 +19,7 @@ const client = createClient();
 
 export default {
   data: () => ({
+    bodyAreaIds: ['all']
   }),
   components: {
     LeftSidebarFilter,
@@ -43,6 +44,17 @@ export default {
       console.error(e)
     }
     return []
+  },
+  methods: {
+    handleBodyAreaChange(id){
+      this.bodyAreaIds = [id]
+    },
+    filterProcedure(procedure){
+      if (this.bodyAreaIds.indexOf('all') > -1)
+        return true
+      else
+        return procedure.fields.bodyAreas.find(bodyArea => this.bodyAreaIds.indexOf(bodyArea.sys.id) > -1)
+    }
   }
 }
 </script>

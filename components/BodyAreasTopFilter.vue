@@ -38,6 +38,8 @@ export default {
       setArea(areaId){
         document.querySelector('#bodyAreasTopFilter figure.selectedArea').classList.remove('selectedArea')
         document.getElementById(`area-${areaId}`).classList.add('selectedArea')
+
+        this.$emit('change', areaId)
       }
     }
 }

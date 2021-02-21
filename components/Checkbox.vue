@@ -1,7 +1,7 @@
 <template>
   <label class="container">
     <slot></slot>
-    <input type="checkbox" :checked="checked" />
+    <input type="checkbox" :value="checked" />
     <span class="checkmark"></span>
   </label>
 </template>
@@ -9,6 +9,11 @@
 <script>
 export default {
     name: "Checkbox",
+    // watch: {
+    //   checked() {
+    //     this.$forceUpdate()
+    //   }
+    // },
     props: {
         checked: {
             type: Boolean,
