@@ -1,7 +1,7 @@
 <template>
-  <label class="container">
-    <slot></slot>
-    <input type="checkbox" :value="checked" />
+  <label class="container" :for="$vnode.key">
+    <slot />
+    <input :id="$vnode.key" :name="name" type="checkbox" :checked="checked ? 'checked' : ''" @change="handleChange" :value="$vnode.key"/>
     <span class="checkmark"></span>
   </label>
 </template>
@@ -9,17 +9,20 @@
 <script>
 export default {
     name: "Checkbox",
-    // watch: {
-    //   checked() {
-    //     this.$forceUpdate()
-    //   }
-    // },
     props: {
-        checked: {
-            type: Boolean,
-            required: false,
-            default: false
-        }
+      checked: {
+        type: Boolean,
+        required: true
+      },
+      name: {
+        type: String,
+        required: true
+      }
+    },
+    methods: {
+      handleChange({ target }){
+        this.$emit('change', { checked: target.checked, value: target.value })
+      }
     }
 }
 </script>

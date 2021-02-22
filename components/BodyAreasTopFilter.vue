@@ -1,10 +1,16 @@
 <template>
   <section id="bodyAreasTopFilter">
-    <figure class="selectedArea" id="area-all" @click="setArea('all')">
+    <!-- <figure :class="'selectedArea'" id="area-all" @click="setArea('all')">
       <img :src="allUrl" alt="All" :width="width" :height="height" />
       <h5>All</h5>
-    </figure>
-    <figure v-for="ba in items" :key="ba.sys.id" @click="setArea(ba.sys.id)" :id="`area-${ba.sys.id}`">
+    </figure>-->
+    <figure
+      v-for="ba in items"
+      :key="ba.sys.id"
+      @click="setArea(ba.sys.id)"
+      :id="`area-${ba.sys.id}`"
+      :class="checkWhetherClassApply(ba.sys.id)"
+    >
       <img
         :src="ba.fields.image ? ba.fields.image.fields.file.url : noImageUrl"
         :alt="ba.fields.name"
@@ -17,6 +23,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
     name: 'BodyAreasTopFilter',
     data() {
@@ -27,19 +34,24 @@ export default {
         height: '60',
       }
     },
-    props: {
-        items: {
-            type: Array,
-            required: true,
-            default: () => []
-        }
+    computed: {
+      items(){
+        return [{
+          sys: { id:'all' },
+          fields: { name: 'All', image: { fields: { file: { url: this.allUrl } } } }
+        }].concat(this.$store.state.allBodyAreas)
+      },
+      ...mapState({
+        selectedItems: 'selectedBodyAreas'
+      })
     },
     methods: {
       setArea(areaId){
-        document.querySelector('#bodyAreasTopFilter figure.selectedArea').classList.remove('selectedArea')
-        document.getElementById(`area-${areaId}`).classList.add('selectedArea')
-
-        this.$emit('change', areaId)
+        this.$store.commit('clearBodyAreasSelection')
+        this.$store.commit('selectBodyArea', areaId)
+      },
+      checkWhetherClassApply(id) {
+        return this.selectedItems.includes(id) && this.selectedItems.length === 1 ? 'selectedArea' : ''
       }
     }
 }
@@ -56,7 +68,7 @@ export default {
     cursor: pointer
     text-align: center
     margin-right: 35px
-    
+
     img
       border: 3px solid #ffffff
       border-radius: 50%

@@ -10,15 +10,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
     name: 'ProceduresGrid',
-    props: {
-      items:{
-        type: Array,
-        required: true,
-        default: () => []
-      }
-    },
+    computed: mapGetters({
+      items: 'currentProcedures'
+    }),
     created(){
       console.log(this.items)
     } 
