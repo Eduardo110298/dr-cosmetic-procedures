@@ -3,7 +3,8 @@
     <div
     v-for="p in items"
     :key="p.sys.id"
-    class="procedure" @click="()=>{}">
+    @click="$router.push({path: '/procedure/' + p.sys.id})"
+    class="procedure">
       <b>{{ p.fields.title }}</b>
     </div>
   </section>
@@ -24,8 +25,7 @@ export default {
 
 <style lang="sass" scoped>
 #proceduresGrid
-  width: 100%
-  // background: blue
+  width: 100%  
   @media (min-width: 768px)
     margin: 25px 5px 5px 25px
   .procedure

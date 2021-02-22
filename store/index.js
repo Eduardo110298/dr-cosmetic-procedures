@@ -3,6 +3,7 @@ import { createClient } from '~/plugins/contentful'
 const client = createClient()
 
 export const state = () => ({
+  singleProcedure : {},
   allProcedures: [],
   allBodyAreas: [],
   selectedBodyAreas: ['all'],
@@ -22,12 +23,15 @@ export const mutations = {
   clearBodyAreasSelection(state) {
     state.selectedBodyAreas = []
   },
-  setProcedures(state, data) {
+  setAllProcedures(state, data) {
     state.allProcedures = data
   },
-  setBodyAreas(state, data) {
+  setAllBodyAreas(state, data) {
     state.allBodyAreas = data
   },
+  setSingleProcedure(state, data){
+    state.singleProcedure = data
+  }
 }
 
 export const actions = {
@@ -49,11 +53,20 @@ export const actions = {
       console.log(bodyAreas)
       console.log(categories)
 
-      commit('setProcedures', procedures)
-      commit('setBodyAreas', bodyAreas)
+      commit('setAllProcedures', procedures)
+      commit('setAllBodyAreas', bodyAreas)
     } catch (e) {
       console.error(e)
     }
+  },
+  fetchEntry({ commit }, id) {
+    return new Promise((resolve, reject) => {
+      client.getEntry(id).then(data => {
+        commit('setSingleProcedure', data)
+        resolve()
+      })
+      .catch(reject)
+    })
   },
 }
 
@@ -62,7 +75,7 @@ export const getters = {
     return state.allProcedures.filter((procedure) => {
       if (state.selectedBodyAreas.includes('all')) return true
       else
-        return procedure.fields.bodyAreas.find((bodyArea) =>
+        return procedure.fields.bodyAreas.some((bodyArea) =>
           state.selectedBodyAreas.includes(bodyArea.sys.id)
         )
     })

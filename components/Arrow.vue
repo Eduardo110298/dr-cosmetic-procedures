@@ -5,13 +5,7 @@
 <script>
 export default {
     name: "Arrow",
-    props: {
-        direction: {
-            type: String,
-            required: false,
-            default: "right"
-        }
-    }
+    props: ['direction']
 }
 </script>
 
