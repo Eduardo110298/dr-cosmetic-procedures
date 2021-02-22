@@ -6,7 +6,7 @@
       </b>
       <arrow :direction="visible ? 'up' : 'down'"></arrow>
     </button>
-    <div class="content" :style="'height: ' + (visible ? '300px' : '0px') ">
+    <div class="content" :style="'height: ' + (visible ? height : '0px') ">
       <slot name="content"></slot>
     </div>
   </section>
@@ -20,6 +20,13 @@ export default {
     data: () => ({
       visible: false
     }),
+    props: {
+      height: {
+        type: String,
+        required: false,
+        default: 'auto'
+      }
+    }
 }
 </script>
 

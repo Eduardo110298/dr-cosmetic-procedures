@@ -1,5 +1,5 @@
 <template>
-  <collapsible>
+  <collapsible height="300px">
     <template slot="title">Body Areas</template>
     <template slot="content">
       <checkbox
