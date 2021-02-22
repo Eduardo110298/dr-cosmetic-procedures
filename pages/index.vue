@@ -1,6 +1,6 @@
 <template>
   <main>
-    <body-areas-top-filter />
+    <body-areas-top-filter/>
     <section id="main-grid">
       <left-sidebar-filter/>
       <procedures-grid/>
@@ -15,7 +15,8 @@ import LeftSidebarFilter from "@/components/LeftSidebarFilter.vue";
 
 export default {
   data: () => ({
-    bodyAreaIds: ['all']
+    bodyAreaIds: ['all'],
+    showMobileFilter: false
   }),
   components: {
     LeftSidebarFilter,
@@ -25,7 +26,7 @@ export default {
   methods: {
     handleBodyAreaChange(id){
       this.bodyAreaIds = [id]
-    },
+    }
   },
   created(){
     this.$store.dispatch('fetchData')

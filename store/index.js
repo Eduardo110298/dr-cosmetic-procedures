@@ -3,6 +3,7 @@ import { createClient } from '~/plugins/contentful'
 const client = createClient()
 
 export const state = () => ({
+  showMobileFilter: false,
   singleProcedure : {},
   allProcedures: [],
   allBodyAreas: [],
@@ -28,6 +29,9 @@ export const mutations = {
   },
   setAllBodyAreas(state, data) {
     state.allBodyAreas = data
+  },
+  setShowMobileFilter(state, value){
+    state.showMobileFilter = value
   },
   setSingleProcedure(state, data){
     state.singleProcedure = data

@@ -1,9 +1,9 @@
 <template>
   <section id="bodyAreasTopFilter">
-    <!-- <figure :class="'selectedArea'" id="area-all" @click="setArea('all')">
-      <img :src="allUrl" alt="All" :width="width" :height="height" />
-      <h5>All</h5>
-    </figure>-->
+    <figure id="mobileFilterButton" @click="$store.commit('setShowMobileFilter', true)">
+      <div><filter-icon width="20px" height="20px"/></div>
+      <h5>Filter</h5>
+    </figure>
     <figure
       v-for="ba in items"
       :key="ba.sys.id"
@@ -23,7 +23,10 @@
 </template>
 
 <script>
+import FilterIcon from "@/components/FilterIcon.vue";
+
 import { mapState } from "vuex";
+
 export default {
     name: 'BodyAreasTopFilter',
     data() {
@@ -33,6 +36,9 @@ export default {
         width: '60',
         height: '60',
       }
+    },
+    components: {
+      FilterIcon
     },
     computed: {
       items(){
@@ -82,6 +88,21 @@ export default {
     h5
       font-weight: 700
       color: #ff838a
+  
+  figure#mobileFilterButton
+    padding-right: 20px
+    margin-right: 20px
+    border-right: 1px solid rgba(31,26,57,.101961)
+
+    @media (min-width: 768px)
+      display: none
+      
+    div
+      line-height: 60px
+      width: 60px
+      height: 60px
+      border: 2px solid #8f8d9c
+      border-radius: 50%
 
   &::-webkit-scrollbar
     width: 8px

@@ -25,17 +25,18 @@ export default {
 
 <style lang="sass" scoped>
 #proceduresGrid
-  width: 100%  
+  width: 100%
   @media (min-width: 768px)
     margin: 25px 5px 5px 25px
   .procedure
     padding: 20px
     border: 1px solid rgba(31,26,57,.101961)
-    margin-right: 20px
-    margin-bottom: 20px
     box-shadow: 0 2px 5px 0 rgba(31,26,57,.101961)
     border-radius: 5px
     cursor: pointer
+    margin: 25px
+    @media (min-width: 768px)
+      margin: 0 20px 20px 0
 
     &:hover
       color: #ff838a
