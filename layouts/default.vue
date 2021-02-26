@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="dr-cosmetic-default-container">
     <Nuxt />
   </div>
 </template>
@@ -16,7 +16,7 @@ html {
     'Helvetica Neue',
     Arial,
     sans-serif; */
-  font-family: 'Josefin Sans', sans-serif!important;
+  font-family: 'Josefin Sans', sans-serif !important;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -24,6 +24,24 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+}
+
+#dr-cosmetic-default-container{
+  overflow-y: auto;
+  height: 768px;
+}
+#dr-cosmetic-default-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+#dr-cosmetic-default-container::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#dr-cosmetic-default-container::-webkit-scrollbar-thumb {
+  background-color: rgba(31, 26, 57, 0.101961);
+  border-radius: 10px;
 }
 
 *,
@@ -34,16 +52,15 @@ html {
   font-family: inherit;
 }
 
-a{
-  
-  color: black
+a {
+  color: black;
 }
 
-a:hover{
-  color: #e0d0d0
+a:hover {
+  color: #e0d0d0;
 }
 
-p{
-  margin-bottom: 20px
+p {
+  margin-bottom: 20px;
 }
 </style>
