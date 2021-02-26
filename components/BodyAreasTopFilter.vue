@@ -84,10 +84,10 @@ export default {
 
   figure.selectedArea
     img
-      border: 3px solid #ff838a
+      border: 3px solid #e0d0d0
     h5
       font-weight: 700
-      color: #ff838a
+      color: #e0d0d0
   
   figure#mobileFilterButton
     padding-right: 20px

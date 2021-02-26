@@ -39,7 +39,7 @@ export default {
       margin: 0 20px 20px 0
 
     &:hover
-      color: #ff838a
+      color: #e0d0d0
 
     @media (min-width: 768px)
       width: calc(50% - 20px)
