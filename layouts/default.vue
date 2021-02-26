@@ -35,11 +35,15 @@ html {
 }
 
 a{
-  text-decoration: none;
+  
   color: black
 }
 
 a:hover{
   color: #e0d0d0
+}
+
+p{
+  margin-bottom: 20px
 }
 </style>

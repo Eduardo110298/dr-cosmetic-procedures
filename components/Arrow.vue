@@ -29,13 +29,13 @@ export default {
 }
 
 .up {
-  margin-top: 7px;
+  /* margin-top: 7px; */
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
 }
 
 .down {
-  margin-top: 3px;
+  /* margin-top: 3px; */
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }

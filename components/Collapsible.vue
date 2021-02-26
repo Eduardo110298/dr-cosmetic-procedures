@@ -1,12 +1,10 @@
 <template>
   <section>
-    <button type="button" class="collapsible" @click="visible = !visible">
-      <b>
-        <slot name="title"></slot>
-      </b>
-      <arrow :direction="visible ? 'up' : 'down'"></arrow>
+    <button type="button" class="collapsible" @click="opened = !opened">
+      <slot name="title"></slot>
+      <arrow :direction="opened ? 'up' : 'down'"></arrow>
     </button>
-    <div class="content" :style="'height: ' + (visible ? height : '0px') ">
+    <div class="content" :style="'height: ' + (opened ? height : '0px') ">
       <slot name="content"></slot>
     </div>
   </section>
@@ -17,14 +15,30 @@ import Arrow from "@/components/Arrow.vue";
 
 export default {
     name: "Collapsible",
-    data: () => ({
-      visible: false
-    }),
     props: {
+      defaultVisibility: {
+        type: Boolean,
+        default: false
+      },
       height: {
         type: String,
         required: false,
         default: 'auto'
+      }
+    },
+    data: () => ({
+      visible: false,
+      defaultVisibilityUsed: false
+    }),
+    computed: {
+      opened: {
+        get() {
+          return !this.defaultVisibilityUsed ? this.defaultVisibility : this.visible
+        },
+        set(){
+          this.visible = !this.visible
+          this.defaultVisibilityUsed = true
+        }
       }
     }
 }
@@ -38,9 +52,11 @@ export default {
   padding: 10px;
   width: 100%;
   border: none;
-  text-align: left;
   outline: none;
   font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .content {
